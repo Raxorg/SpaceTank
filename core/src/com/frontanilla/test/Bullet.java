@@ -25,7 +25,6 @@ public class Bullet {
                 MathUtils.sinDeg(rotation)
         );
         position.add(velocity);
-
     }
 
     public void render(SpriteBatch batch) {
