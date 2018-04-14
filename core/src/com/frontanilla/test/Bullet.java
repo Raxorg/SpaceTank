@@ -14,16 +14,16 @@ public class Bullet {
 
     public Bullet(Vector2 position, float rotation) {
         base = new Texture("pixel.jpg");
-        this.position = position;
+        this.position = position.cpy();
         velocity = new Vector2();
         this.rotation = rotation;
-    }
-
-    public void update() {
         velocity.set(
                 MathUtils.cosDeg(rotation),
                 MathUtils.sinDeg(rotation)
         );
+    }
+
+    public void update() {
         position.add(velocity);
     }
 

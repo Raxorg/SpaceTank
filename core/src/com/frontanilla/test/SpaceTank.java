@@ -20,16 +20,19 @@ public class SpaceTank {
         rotation = 0;
         base = new Texture("tank_base.png");
         glow = new Texture("tank_glow.png");
-        position = new Vector2();
+        position = new Vector2(100, 100);
         cannonPosition = new Vector2();
         random = new Random();
     }
 
     public void update() {
         cannonPosition.set(
-                position.x + (Constants.TANK_WIDTH / 2) * MathUtils.cosDeg(rotation),
-                position.y + Constants.TANK_HEIGHT * MathUtils.sinDeg(rotation)
+                position.x - Constants.BULLET_SIZE / 2 + Constants.TANK_WIDTH / 2 +
+                        (Constants.TANK_WIDTH / 2) * MathUtils.cosDeg(rotation),
+                position.y - Constants.BULLET_SIZE / 2 + Constants.TANK_HEIGHT / 2 +
+                        (Constants.TANK_HEIGHT / 2) * MathUtils.sinDeg(rotation)
         );
+        rotation += 1;
     }
 
     public void render(SpriteBatch batch) {
@@ -41,8 +44,8 @@ public class SpaceTank {
                 glow,
                 position.x,
                 position.y,
-                50,
-                50,
+                Constants.TANK_WIDTH / 2,
+                Constants.TANK_HEIGHT / 2,
                 Constants.TANK_WIDTH,
                 Constants.TANK_HEIGHT,
                 1,
@@ -60,8 +63,8 @@ public class SpaceTank {
                 base,
                 position.x,
                 position.y,
-                50,
-                50,
+                Constants.TANK_WIDTH / 2,
+                Constants.TANK_HEIGHT / 2,
                 Constants.TANK_WIDTH,
                 Constants.TANK_HEIGHT,
                 1,
